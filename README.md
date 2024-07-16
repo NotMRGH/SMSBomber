@@ -2,6 +2,6 @@
 
 ## Install
 ```shell
-curl https://github.com/NotMRGH/SMSBomber/releases/latest/download/SMSBomber.jar
+wget https://github.com/NotMRGH/SMSBomber/releases/latest/download/SMSBomber.jar
 java -jar SMSBomber.jar
  ```
