@@ -42,7 +42,7 @@ public class RequestUtil {
                 }
                 System.out.println(body);
                 executor.submit(() -> {
-                    smsRequest(api.getUrl(), body,
+                    smsRequest(api.getUrl().replaceAll("%phone%", phone), body,
                             (integer) -> {
                                 sendLog(api.getName(), integer);
                             }
