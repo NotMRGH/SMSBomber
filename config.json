@@ -1,12 +1,16 @@
 [
-    {
-        "name": "snapp",
-        "url": "https://app.snapp.taxi/api/api-passenger-oauth/v2/otp",
-        "payload": "cellphone"
-    },
-    {
-        "name": "deniizshop",
-        "url": "https://deniizshop.com/api/v1/sessions/login_request",
-        "payload": "mobile_phone"
+  {
+    "name": "Snapp",
+    "url": "https://app.snapp.taxi/api/api-passenger-oauth/v2/otp",
+    "payload": {
+      "cellphone": "%phone%"
     }
+  },
+  {
+    "name": "Deniizshop",
+    "url": "https://deniizshop.com/api/v1/sessions/login_request",
+    "payload": {
+      "mobile_phone": "%phone%"
+    }
+  }
 ]

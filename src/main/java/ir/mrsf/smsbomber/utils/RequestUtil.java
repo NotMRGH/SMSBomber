@@ -1,7 +1,9 @@
 package ir.mrsf.smsbomber.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import ir.mrsf.smsbomber.SMSBomber;
 import ir.mrsf.smsbomber.models.API;
 import lombok.experimental.UtilityClass;
@@ -28,10 +30,19 @@ public class RequestUtil {
 
             final List<API> apiList = SMSBomber.getSmsBomber().getConfigManager().getApiList();
             for (API api : apiList) {
+                final JsonObject body = new JsonObject();
+                final JsonObject payload = api.getPayload();
+                for (String key : payload.keySet()) {
+                    final JsonElement phonePayload = payload.get(key);
+                    if (phonePayload instanceof JsonPrimitive jsonPrimitive && jsonPrimitive.isString()) {
+                        body.addProperty(key, jsonPrimitive.getAsString().replaceAll("%phone%", phone));
+                        continue;
+                    }
+                    body.add(key, phonePayload);
+                }
+                System.out.println(body);
                 executor.submit(() -> {
-                    final JsonObject jsonObject = new JsonObject();
-                    jsonObject.addProperty(api.getPayload(), phone);
-                    smsRequest(api.getUrl(), jsonObject,
+                    smsRequest(api.getUrl(), body,
                             (integer) -> {
                                 sendLog(api.getName(), integer);
                             }
