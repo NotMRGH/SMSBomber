@@ -1,6 +1,6 @@
 package ir.mrsf.smsbomber.models;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,5 +9,5 @@ import lombok.Getter;
 public class API {
     private final String name;
     private final String url;
-    private final JsonObject payload;
+    private final JsonElement payload;
 }

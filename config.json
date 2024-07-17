@@ -12,5 +12,10 @@
     "payload": {
       "mobile_phone": "%phone%"
     }
+  },
+  {
+    "name": "Deniizshop",
+    "url": "https://gamerzshop.ir/wp-admin/admin-ajax.php",
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=e3cc029c54&login=2&username=&email=&captcha=&captcha_ses=&json=1&whatsapp=0"
   }
 ]

@@ -1,10 +1,10 @@
 package ir.mrsf.smsbomber.utils;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import ir.mrsf.smsbomber.SMSBomber;
+import ir.mrsf.smsbomber.enums.ContentType;
 import ir.mrsf.smsbomber.models.API;
 import lombok.experimental.UtilityClass;
 
@@ -30,19 +30,24 @@ public class RequestUtil {
 
             final List<API> apiList = SMSBomber.getSmsBomber().getConfigManager().getApiList();
             for (API api : apiList) {
-                final JsonObject body = new JsonObject();
-                final JsonObject payload = api.getPayload();
-                for (String key : payload.keySet()) {
-                    final JsonElement phonePayload = payload.get(key);
-                    if (phonePayload instanceof JsonPrimitive jsonPrimitive && jsonPrimitive.isString()) {
-                        body.addProperty(key, jsonPrimitive.getAsString().replaceAll("%phone%", phone));
-                        continue;
-                    }
-                    body.add(key, phonePayload);
+                final Object payload = api.getPayload();
+                ContentType contentType;
+                String body;
+                if (payload instanceof JsonObject payloadJson) {
+                    body = gson.toJson(payloadJson, JsonObject.class);
+                    contentType = ContentType.JSON;
+                } else if (payload instanceof JsonPrimitive jsonPrimitive && jsonPrimitive.isString()) {
+                    contentType = ContentType.www_form_urlencoded;
+                    body = jsonPrimitive.getAsString();
+                } else {
+                    contentType = null;
+                    body = null;
                 }
-                System.out.println(body);
+                if (contentType == null) continue;
+                if (body == null) continue;
                 executor.submit(() -> {
-                    smsRequest(api.getUrl().replaceAll("%phone%", phone), body,
+                    smsRequest(api.getUrl().replaceAll("%phone%", phone), contentType,
+                            body.replaceAll("%phone%", phone),
                             (integer) -> {
                                 sendLog(api.getName(), integer);
                             }
@@ -63,12 +68,11 @@ public class RequestUtil {
         }
     }
 
-    private void smsRequest(String url, JsonObject header, Consumer<Integer> callback) {
+    private void smsRequest(String url, ContentType contentType, String body, Consumer<Integer> callback) {
         try {
             Thread.sleep(3000);
-            final String jsonData = gson.toJson(header);
-            byte[] postData = jsonData.getBytes(StandardCharsets.UTF_8);
-            final HttpURLConnection conn = getHttpURLConnectionSMS(url, postData);
+            byte[] postData = body.getBytes(StandardCharsets.UTF_8);
+            final HttpURLConnection conn = getHttpURLConnectionSMS(url, contentType, postData);
 
             try (OutputStream os = conn.getOutputStream()) {
                 os.write(postData);
@@ -82,13 +86,13 @@ public class RequestUtil {
     }
 
 
-    private HttpURLConnection getHttpURLConnectionSMS(String url, byte[] postData) throws IOException {
+    private HttpURLConnection getHttpURLConnectionSMS(String url, ContentType contentType, byte[] postData) throws IOException {
         final HttpURLConnection conn = (HttpURLConnection) new URL(url).
                 openConnection(SMSBomber.getSmsBomber().getProxyManager().getNextProxy());
         conn.setDoOutput(true);
         conn.setInstanceFollowRedirects(false);
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Content-Type", contentType.getString());
         conn.setRequestProperty("charset", "utf-8");
         conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
         conn.setUseCaches(false);
