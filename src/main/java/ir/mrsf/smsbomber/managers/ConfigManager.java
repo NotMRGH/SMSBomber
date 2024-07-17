@@ -1,6 +1,9 @@
 package ir.mrsf.smsbomber.managers;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import ir.mrsf.smsbomber.models.API;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -10,14 +13,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ConfigManager {
-    @Getter
     private final List<API> apiList;
-    private final Gson gson;
 
     public ConfigManager() {
         this.apiList = new ArrayList<>();
-        this.gson = new Gson();
         this.load();
     }
 
@@ -38,7 +39,10 @@ public class ConfigManager {
             for (JsonElement element : jsonArray) {
                 if (element instanceof JsonObject jsonObject) {
                     this.apiList.add(new API(jsonObject.get("name").getAsString(),
-                            jsonObject.get("url").getAsString(), jsonObject.get("payload")));
+                            jsonObject.get("url").getAsString(),
+                            jsonObject.get("countryCode").getAsString(),
+                            jsonObject.get("withOutZero").getAsBoolean(),
+                            jsonObject.get("payload")));
                 }
             }
         }

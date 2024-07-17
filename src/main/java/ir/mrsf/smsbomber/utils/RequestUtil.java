@@ -45,12 +45,16 @@ public class RequestUtil {
                 }
                 if (contentType == null) continue;
                 if (body == null) continue;
+                final String phoneNumber;
+                if (api.isWithOutZero()) {
+                    phoneNumber = api.getCountryCode() + phone.replaceFirst("^0+", "");
+                } else {
+                    phoneNumber = api.getCountryCode() + phone;
+                }
                 executor.submit(() -> {
-                    smsRequest(api.getUrl().replaceAll("%phone%", phone), contentType,
-                            body.replaceAll("%phone%", phone),
-                            (integer) -> {
-                                sendLog(api.getName(), integer);
-                            }
+                    smsRequest(api.getUrl().replaceAll("%phone%", phoneNumber), contentType,
+                            body.replaceAll("%phone%", phoneNumber),
+                            (integer) -> sendLog(api.getName(), integer)
                     );
                 });
                 Thread.sleep(500);

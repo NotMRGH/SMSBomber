@@ -9,5 +9,7 @@ import lombok.Getter;
 public class API {
     private final String name;
     private final String url;
+    private final String countryCode;
+    private final boolean withOutZero;
     private final JsonElement payload;
 }

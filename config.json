@@ -2,6 +2,8 @@
   {
     "name": "Snapp",
     "url": "https://app.snapp.taxi/api/api-passenger-oauth/v2/otp",
+    "countryCode": "",
+    "withOutZero": false,
     "payload": {
       "cellphone": "%phone%"
     }
@@ -9,13 +11,106 @@
   {
     "name": "Deniizshop",
     "url": "https://deniizshop.com/api/v1/sessions/login_request",
+    "countryCode": "",
+    "withOutZero": false,
     "payload": {
       "mobile_phone": "%phone%"
     }
   },
   {
-    "name": "Deniizshop",
+    "name": "otaghak",
+    "url": "https://core.otaghak.com/odata/Otaghak/Users/SendVerificationCode",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "userName": "%phone%"
+    }
+  },
+  {
+    "name": "namava",
+    "url": "https://www.namava.ir/api/v1.0/accounts/registrations/by-phone/request",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "UserName": "%phone%"
+    }
+  },
+  {
+    "name": "snapp",
+    "url": "https://api.snapp.ir/api/v1/sms/link",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "phone": "%phone%"
+    }
+  },
+  {
+    "name": "nobat",
+    "url": "https://nobat.ir/api/public/patient/login/phone",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "mobile": "%phone%"
+    }
+  },
+  {
+    "name": "divar",
+    "url": "https://api.divar.ir/v5/auth/authenticate",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "phone": "%phone%"
+    }
+  },
+  {
+    "name": "simkhan",
+    "url": "https://www.simkhanapi.ir/api/users/registerV2",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "mobileNumbe": "%phone%"
+    }
+  },
+  {
+    "name": "tap30",
+    "url": "https://tap33.me/api/v2/user",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "credential": {
+        "phoneNumber": "%phone%",
+        "role": "PASSENGER"
+      }
+    }
+  },
+  {
+    "name": "gamerzshop",
     "url": "https://gamerzshop.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "withOutZero": false,
     "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=e3cc029c54&login=2&username=&email=&captcha=&captcha_ses=&json=1&whatsapp=0"
+  },
+  {
+    "name": "wow-online",
+    "url": "https://wow-online.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "withOutZero": true,
+    "payload": "digt_countrycode=%2B98&phone=%phone%&email=dhgsegdfef%40gmail.com&digits_reg_name=fesfhjsefgs&digits_process_register=1&instance_id=e7d05ccd4e8cc54927226f4f99c010b5&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Fwow-online.ir%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F&digits_form=99411620ca&_wp_http_referer=%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F"
+  },
+  {
+    "name": "gamerzshop",
+    "url": "https://dragonsteam.net/web/user/login",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": "phone=%phone%"
+  },
+  {
+    "name": "iraniansteam",
+    "url": "https://api.iraniansteam.ir/api/v1/auth",
+    "countryCode": "",
+    "withOutZero": false,
+    "payload": {
+      "phone": "%phone%"
+    }
   }
 ]
