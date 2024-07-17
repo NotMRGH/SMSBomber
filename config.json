@@ -327,5 +327,101 @@
     "payload": {
       "phone": "%phone%"
     }
+  },
+  {
+    "name": "gifkart.com",
+    "url": "https://gifkart.com/request",
+    "countryCode": "",
+    "repeat": 1,
+    "withOutZero": false,
+    "payload": "PhoneNumber=%phone%"
+  },
+  {
+    "name": "orixgame",
+    "url": "https://orixgame.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": true,
+    "payload": "digits_reg_name=fjhsufhf&digits_reg_lastname=fjerfujeh&digt_countrycode=%2B98&phone=%phone%&email=jhdhgydhgd%40gmail.com&digits_reg_password=fvdjjhkmfhjngbfghjnc&digits_process_register=1&instance_id=3a84f392c2372fa991fa9387fffb9224&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Forixgame.ir%2Fproduct-category%2Fpubg-mobile%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F&digits_form=ab64adf1e8&_wp_http_referer=%2Fproduct-category%2Fpubg-mobile%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F"
+  },
+  {
+    "name": "victorshop",
+    "url": "https://victorshop.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": true,
+    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone%&digits_email=&action_type=phone&digits_reg_username=grdhgdhdhd&digits_reg_password=grdjkdrghgkjd&digits_reg_avansbirthdate=&email=&digits_reg_mellicode1719247753696=&digits_reg_avansregisterrefid=&digits_process_register=1&rememberme=1&digits=1&instance_id=ff17bfde248ecd197db1207007e6e4ce&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=-1&digits_form=1bf5f873dc&_wp_http_referer=%2Fcart%2F&show_force_title=1"
+  },
+  {
+    "name": "solsoshop",
+    "url": "https://solsoshop.com/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=b0b13dfbb7&login=2&username=fthfthfthf&email=esfsfsggsgs%40gmail.com&captcha=&captcha_ses=&json=1&whatsapp=0"
+  },
+  {
+    "name": "pubg.ir",
+    "url": "https://www.pubg.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=d2b963225b&login=2&username=&email=&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_displayname=ghbjkfjhbgfjn&digregcode=%2B98&digits_reg_mail=%phone%&digits_reg_%D9%82%D9%88%D8%A7%D9%86%DB%8C%D9%86%D9%88%D8%B4%D8%B1%D8%A7%DB%8C%D8%B71619712465912=1&dig_otp=&code=&dig_reg_mail=&dig_nounce=d2b963225b"
+  },
+  {
+    "name": "mojogem",
+    "url": "https://mojogem.com/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 1,
+    "withOutZero": false,
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=d75b692e63&login=2&username=&email=rvdjskvjdiusv%40gmail.com&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_firstname=fdjhhdbfjhg&digregcode=%2B98&digits_reg_mail=%phone%&digregscode2=%2B98&mobmail2=rvdjskvjdiusv%40gmail.com&digits_reg_password=&code=&dig_reg_mail=rvdjskvjdiusv%40gmail.com&dig_nounce=d75b692e63&dig_otp=&digits_redirect_page=&digbuilder_form=1&post_id=1124017&form_id=2312f81"
+  },
+  {
+    "name": "statetv",
+    "url": "https://statetv.games/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "first_name=gfdhudrghyrgh&phone_number=%phone%&password=tgjfgjhjhfthhtjf&password_repeat=tgjfgjhjhfthhtjf&wupp_remember_me=on&action=wupp_sign_up"
+  },
+  {
+    "name": "lintagame",
+    "url": "https://lintagame.com/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "action=logini_first&login=%phone%"
+  },
+  {
+    "name": "tezarstore",
+    "url": "https://tezarstore.com/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "action=logini_first&login=%phone%"
+  },
+  {
+    "name": "noxplus",
+    "url": "https://noxplus.ir/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "action=logini_first&login=%phone%"
+  },
+  {
+    "name": "easyget",
+    "url": "https://www.easyget.cash/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": true,
+    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone%&action_type=phone&rememberme=1&digits=1&instance_id=586c4b5af137625a7621641c4f98ac79&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fwww.easyget.cash%2F&digits_form=0e80c3618e&_wp_http_referer=%2F&show_force_title=1"
+  },
+  {
+    "name": "giftmift",
+    "url": "https://giftmift.com/wp-admin/admin-ajax.php",
+    "countryCode": "",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "digt_countrycode=%2B98&mobile%2Femail=%phone%&instance_id=851153ddb979d7da3a2aaeb293569e29&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fgiftmift.com%2Fmy-account%2F&digits_form=b0f432e8d8&action_type=phone&digits_phone=%phone%&digits_email=&digits_secured=1&woocommerce-login-nonce=103395072a&_wp_http_referer=%2Fmy-account%2F&digits_container_id=customer_login"
   }
 ]
