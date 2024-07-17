@@ -11,5 +11,6 @@ public class API {
     private final String url;
     private final String countryCode;
     private final boolean withOutZero;
+    private final int repeat;
     private final JsonElement payload;
 }

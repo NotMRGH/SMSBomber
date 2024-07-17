@@ -42,6 +42,7 @@ public class ConfigManager {
                             jsonObject.get("url").getAsString(),
                             jsonObject.get("countryCode").getAsString(),
                             jsonObject.get("withOutZero").getAsBoolean(),
+                            jsonObject.get("repeat").getAsInt(),
                             jsonObject.get("payload")));
                 }
             }

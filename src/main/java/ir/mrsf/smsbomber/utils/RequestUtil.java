@@ -51,13 +51,15 @@ public class RequestUtil {
                 } else {
                     phoneNumber = api.getCountryCode() + phone;
                 }
-                executor.submit(() -> {
-                    smsRequest(api.getUrl().replaceAll("%phone%", phoneNumber), contentType,
-                            body.replaceAll("%phone%", phoneNumber),
-                            (integer) -> sendLog(api.getName(), integer)
-                    );
-                });
-                Thread.sleep(500);
+                for (int i = 0; i < api.getRepeat(); i++) {
+                    executor.submit(() -> {
+                        smsRequest(api.getUrl().replaceAll("%phone%", phoneNumber), contentType,
+                                body.replaceAll("%phone%", phoneNumber),
+                                (integer) -> sendLog(api.getName(), integer)
+                        );
+                    });
+                }
+                Thread.sleep(100);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -83,7 +85,6 @@ public class RequestUtil {
             }
 
             callback.accept(conn.getResponseCode());
-            Thread.sleep(3000);
         } catch (Exception e) {
             callback.accept(500);
         }
