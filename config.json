@@ -2,194 +2,194 @@
   {
     "name": "Snapp 1",
     "url": "https://app.snapp.taxi/api/api-passenger-oauth/v2/otp",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "cellphone": "%phone%"
+      "cellphone": "%phone_number%"
     }
   },
   {
     "name": "Deniizshop",
     "url": "https://deniizshop.com/api/v1/sessions/login_request",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile_phone": "%phone%"
+      "mobile_phone": "%phone_number%"
     }
   },
   {
     "name": "otaghak",
     "url": "https://core.otaghak.com/odata/Otaghak/Users/SendVerificationCode",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "userName": "%phone%"
+      "userName": "%phone_number%"
     }
   },
   {
     "name": "banimode",
     "url": "https://mobapi.banimode.com/api/v2/auth/request",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "namava",
     "url": "https://www.namava.ir/api/v1.0/accounts/registrations/by-phone/request",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "UserName": "%phone%"
+      "UserName": "%phone_number%"
     }
   },
   {
     "name": "digikalajet",
     "url": "https://api.digikalajet.ir/user/login-register",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "trip",
     "url": "https://gateway.trip.ir/api/Totp",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 5,
     "payload": {
-      "PhoneNumber": "%phone%"
+      "PhoneNumber": "%phone_number%"
     }
   },
   {
     "name": "snapp 2",
     "url": "https://api.snapp.ir/api/v1/sms/link",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "Zigap",
     "url": "https://zigap.smilinno-dev.com/api/v1.6/authenticate/sendotp",
-    "countryCode": "+98",
+    "method": "POST",
     "withOutZero": true,
     "repeat": 1,
     "payload": {
-      "phoneNumber": "%phone%"
+      "phoneNumber": "+98%phone_number%"
     }
   },
   {
     "name": "jabama",
     "url": "https://gw.jabama.com/api/v4/account/send-code",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile": "%phone%"
+      "mobile": "%phone_number%"
     }
   },
   {
     "name": "Banimode",
     "url": "https://mobapi.banimode.com/api/v2/auth/request",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "digikala 1",
     "url": "https://api.digikala.com/v1/user/authenticate",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "username": "%phone%",
+      "username": "%phone_number%",
       "otp_call": false
     }
   },
   {
     "name": "digikala 2",
     "url": "https://api.digikala.com/v1/user/forgot/check",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "username": "%phone%"
+      "username": "%phone_number%"
     }
   },
   {
     "name": "Alibaba",
     "url": "https://ws.alibaba.ir/api/v3/account/mobile/otp",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": true,
     "repeat": 1,
     "payload": {
-      "phoneNumber": "%phone%"
+      "phoneNumber": "%phone_number%"
     }
   },
   {
     "name": "Sheypoor",
     "url": "https://www.sheypoor.com/api/v10.0.0/auth/send",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "username": "%phone%"
+      "username": "%phone_number%"
     }
   },
   {
     "name": "bikoplus",
     "url": "https://bikoplus.com/account/check-phone-number",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phoneNumber": "%phone%"
+      "phoneNumber": "%phone_number%"
     }
   },
   {
     "name": "nobat",
     "url": "https://nobat.ir/api/public/patient/login/phone",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile": "%phone%"
+      "mobile": "%phone_number%"
     }
   },
   {
     "name": "gapfilm",
     "url": "https://core.gapfilm.ir/api/v3.1/Account/Login",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": true,
     "repeat": 2,
     "payload": {
       "Type": "3",
-      "Username": "%phone%"
+      "Username": "%phone_number%"
     }
   },
   {
     "name": "Tapsi",
     "url": "https://api.tapsi.ir/api/v2.2/user",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
       "credential": {
-        "phoneNumber": "%phone%",
+        "phoneNumber": "%phone_number%",
         "role": "DRIVER"
       },
       "otpOption": "SMS"
@@ -198,98 +198,98 @@
   {
     "name": "Lendo",
     "url": "https://api.lendo.ir/api/customer/auth/send-otp",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile": "%phone%"
+      "mobile": "%phone_number%"
     }
   },
   {
     "name": "Hamrah-Mechanic",
     "url": "https://www.hamrah-mechanic.com/api/v1/membership/otp",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 5,
     "payload": {
-      "PhoneNumber": "%phone%"
+      "PhoneNumber": "%phone_number%"
     }
   },
   {
     "name": "OKCS",
     "url": "https://my.okcs.com/api/check-mobile",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile": "%phone%"
+      "mobile": "%phone_number%"
     }
   },
   {
     "name": "Rojashop",
     "url": "https://rojashop.com/api/send-otp-register",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobile": "%phone%"
+      "mobile": "%phone_number%"
     }
   },
   {
     "name": "Paklean",
     "url": "https://client.api.paklean.com/download",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "tel": "%phone%"
+      "tel": "%phone_number%"
     }
   },
   {
     "name": "divar",
     "url": "https://api.divar.ir/v5/auth/authenticate",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "simkhan",
     "url": "https://www.simkhanapi.ir/api/users/registerV2",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
     "payload": {
-      "mobileNumbe": "%phone%"
+      "mobileNumbe": "%phone_number%"
     }
   },
   {
     "name": "buytf2key",
     "url": "https://buytf2key.ir/web/user/login",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 3,
-    "payload": "phone=%phone%"
+    "payload": "phone=%phone_number%"
   },
   {
     "name": "mytf2",
     "url": "https://mytf2.ir/web/user/login",
-    "countryCode": "",
+    "method": "POST",
     "withOutZero": false,
     "repeat": 1,
-    "payload": "phone=%phone%"
+    "payload": "phone=%phone_number%"
   },
   {
     "name": "tap30",
     "url": "https://tap33.me/api/v2/user",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 1,
     "withOutZero": false,
     "payload": {
       "credential": {
-        "phoneNumber": "%phone%",
+        "phoneNumber": "%phone_number%",
         "role": "PASSENGER"
       }
     }
@@ -297,131 +297,131 @@
   {
     "name": "gamerzshop",
     "url": "https://gamerzshop.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=e3cc029c54&login=2&username=&email=&captcha=&captcha_ses=&json=1&whatsapp=0"
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=e3cc029c54&login=2&username=&email=&captcha=&captcha_ses=&json=1&whatsapp=0"
   },
   {
     "name": "wow-online",
     "url": "https://wow-online.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": true,
-    "payload": "digt_countrycode=%2B98&phone=%phone%&email=dhgsegdfef%40gmail.com&digits_reg_name=fesfhjsefgs&digits_process_register=1&instance_id=e7d05ccd4e8cc54927226f4f99c010b5&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Fwow-online.ir%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F&digits_form=99411620ca&_wp_http_referer=%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F"
+    "payload": "digt_countrycode=%2B98&phone=%phone_number%&email=dhgsegdfef%40gmail.com&digits_reg_name=fesfhjsefgs&digits_process_register=1&instance_id=e7d05ccd4e8cc54927226f4f99c010b5&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Fwow-online.ir%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F&digits_form=99411620ca&_wp_http_referer=%2Fproduct%2F%25DA%25A9%25D9%2584%25DB%258C%25D8%25AF-%25D8%25AA%25DB%258C%25D9%2585-%25D9%2581%25D9%2588%25D8%25B1%25D8%25AA%25D8%25B1%25D8%25B3-2-mann-co-supply-crate-key-tf2%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Fwow-online.ir%252Fproduct%252F%2525DA%2525A9%2525D9%252584%2525DB%25258C%2525D8%2525AF-%2525D8%2525AA%2525DB%25258C%2525D9%252585-%2525D9%252581%2525D9%252588%2525D8%2525B1%2525D8%2525AA%2525D8%2525B1%2525D8%2525B3-2-mann-co-supply-crate-key-tf2%252F"
   },
   {
     "name": "dragonsteam",
     "url": "https://dragonsteam.net/web/user/login",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "phone=%phone%"
+    "payload": "phone=%phone_number%"
   },
   {
     "name": "iraniansteam",
     "url": "https://api.iraniansteam.ir/api/v1/auth",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
     "payload": {
-      "phone": "%phone%"
+      "phone": "%phone_number%"
     }
   },
   {
     "name": "gifkart.com",
     "url": "https://gifkart.com/request",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 1,
     "withOutZero": false,
-    "payload": "PhoneNumber=%phone%"
+    "payload": "PhoneNumber=%phone_number%"
   },
   {
     "name": "orixgame",
     "url": "https://orixgame.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": true,
-    "payload": "digits_reg_name=fjhsufhf&digits_reg_lastname=fjerfujeh&digt_countrycode=%2B98&phone=%phone%&email=jhdhgydhgd%40gmail.com&digits_reg_password=fvdjjhkmfhjngbfghjnc&digits_process_register=1&instance_id=3a84f392c2372fa991fa9387fffb9224&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Forixgame.ir%2Fproduct-category%2Fpubg-mobile%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F&digits_form=ab64adf1e8&_wp_http_referer=%2Fproduct-category%2Fpubg-mobile%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F"
+    "payload": "digits_reg_name=fjhsufhf&digits_reg_lastname=fjerfujeh&digt_countrycode=%2B98&phone=%phone_number%&email=jhdhgydhgd%40gmail.com&digits_reg_password=fvdjjhkmfhjngbfghjnc&digits_process_register=1&instance_id=3a84f392c2372fa991fa9387fffb9224&optional_data=optional_data&action=digits_forms_ajax&type=register&dig_otp=&digits=1&digits_redirect_page=%2F%2Forixgame.ir%2Fproduct-category%2Fpubg-mobile%2F%3Fpage%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F&digits_form=ab64adf1e8&_wp_http_referer=%2Fproduct-category%2Fpubg-mobile%2F%3Flogin%3Dtrue%26page%3D1%26redirect_to%3Dhttps%253A%252F%252Forixgame.ir%252Fproduct-category%252Fpubg-mobile%252F"
   },
   {
     "name": "victorshop",
     "url": "https://victorshop.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": true,
-    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone%&digits_email=&action_type=phone&digits_reg_username=grdhgdhdhd&digits_reg_password=grdjkdrghgkjd&digits_reg_avansbirthdate=&email=&digits_reg_mellicode1719247753696=&digits_reg_avansregisterrefid=&digits_process_register=1&rememberme=1&digits=1&instance_id=ff17bfde248ecd197db1207007e6e4ce&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=-1&digits_form=1bf5f873dc&_wp_http_referer=%2Fcart%2F&show_force_title=1"
+    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone_number%&digits_email=&action_type=phone&digits_reg_username=grdhgdhdhd&digits_reg_password=grdjkdrghgkjd&digits_reg_avansbirthdate=&email=&digits_reg_mellicode1719247753696=&digits_reg_avansregisterrefid=&digits_process_register=1&rememberme=1&digits=1&instance_id=ff17bfde248ecd197db1207007e6e4ce&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=-1&digits_form=1bf5f873dc&_wp_http_referer=%2Fcart%2F&show_force_title=1"
   },
   {
     "name": "solsoshop",
     "url": "https://solsoshop.com/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=b0b13dfbb7&login=2&username=fthfthfthf&email=esfsfsggsgs%40gmail.com&captcha=&captcha_ses=&json=1&whatsapp=0"
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=b0b13dfbb7&login=2&username=fthfthfthf&email=esfsfsggsgs%40gmail.com&captcha=&captcha_ses=&json=1&whatsapp=0"
   },
   {
     "name": "pubg.ir",
     "url": "https://www.pubg.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=d2b963225b&login=2&username=&email=&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_displayname=ghbjkfjhbgfjn&digregcode=%2B98&digits_reg_mail=%phone%&digits_reg_%D9%82%D9%88%D8%A7%D9%86%DB%8C%D9%86%D9%88%D8%B4%D8%B1%D8%A7%DB%8C%D8%B71619712465912=1&dig_otp=&code=&dig_reg_mail=&dig_nounce=d2b963225b"
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=d2b963225b&login=2&username=&email=&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_displayname=ghbjkfjhbgfjn&digregcode=%2B98&digits_reg_mail=%phone_number%&digits_reg_%D9%82%D9%88%D8%A7%D9%86%DB%8C%D9%86%D9%88%D8%B4%D8%B1%D8%A7%DB%8C%D8%B71619712465912=1&dig_otp=&code=&dig_reg_mail=&dig_nounce=d2b963225b"
   },
   {
     "name": "mojogem",
     "url": "https://mojogem.com/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 1,
     "withOutZero": false,
-    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone%&csrf=d75b692e63&login=2&username=&email=rvdjskvjdiusv%40gmail.com&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_firstname=fdjhhdbfjhg&digregcode=%2B98&digits_reg_mail=%phone%&digregscode2=%2B98&mobmail2=rvdjskvjdiusv%40gmail.com&digits_reg_password=&code=&dig_reg_mail=rvdjskvjdiusv%40gmail.com&dig_nounce=d75b692e63&dig_otp=&digits_redirect_page=&digbuilder_form=1&post_id=1124017&form_id=2312f81"
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=d75b692e63&login=2&username=&email=rvdjskvjdiusv%40gmail.com&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digits_reg_firstname=fdjhhdbfjhg&digregcode=%2B98&digits_reg_mail=%phone_number%&digregscode2=%2B98&mobmail2=rvdjskvjdiusv%40gmail.com&digits_reg_password=&code=&dig_reg_mail=rvdjskvjdiusv%40gmail.com&dig_nounce=d75b692e63&dig_otp=&digits_redirect_page=&digbuilder_form=1&post_id=1124017&form_id=2312f81"
   },
   {
     "name": "statetv",
     "url": "https://statetv.games/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "first_name=gfdhudrghyrgh&phone_number=%phone%&password=tgjfgjhjhfthhtjf&password_repeat=tgjfgjhjhfthhtjf&wupp_remember_me=on&action=wupp_sign_up"
+    "payload": "first_name=gfdhudrghyrgh&phone_number=%phone_number%&password=tgjfgjhjhfthhtjf&password_repeat=tgjfgjhjhfthhtjf&wupp_remember_me=on&action=wupp_sign_up"
   },
   {
     "name": "lintagame",
     "url": "https://lintagame.com/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=logini_first&login=%phone%"
+    "payload": "action=logini_first&login=%phone_number%"
   },
   {
     "name": "tezarstore",
     "url": "https://tezarstore.com/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=logini_first&login=%phone%"
+    "payload": "action=logini_first&login=%phone_number%"
   },
   {
     "name": "noxplus",
     "url": "https://noxplus.ir/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "action=logini_first&login=%phone%"
+    "payload": "action=logini_first&login=%phone_number%"
   },
   {
     "name": "easyget",
     "url": "https://www.easyget.cash/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": true,
-    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone%&action_type=phone&rememberme=1&digits=1&instance_id=586c4b5af137625a7621641c4f98ac79&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fwww.easyget.cash%2F&digits_form=0e80c3618e&_wp_http_referer=%2F&show_force_title=1"
+    "payload": "login_digt_countrycode=%2B98&digits_phone=%phone_number%&action_type=phone&rememberme=1&digits=1&instance_id=586c4b5af137625a7621641c4f98ac79&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fwww.easyget.cash%2F&digits_form=0e80c3618e&_wp_http_referer=%2F&show_force_title=1"
   },
   {
     "name": "giftmift",
     "url": "https://giftmift.com/wp-admin/admin-ajax.php",
-    "countryCode": "",
+    "method": "POST",
     "repeat": 5,
     "withOutZero": false,
-    "payload": "digt_countrycode=%2B98&mobile%2Femail=%phone%&instance_id=851153ddb979d7da3a2aaeb293569e29&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fgiftmift.com%2Fmy-account%2F&digits_form=b0f432e8d8&action_type=phone&digits_phone=%phone%&digits_email=&digits_secured=1&woocommerce-login-nonce=103395072a&_wp_http_referer=%2Fmy-account%2F&digits_container_id=customer_login"
+    "payload": "digt_countrycode=%2B98&mobile%2Femail=%phone_number%&instance_id=851153ddb979d7da3a2aaeb293569e29&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fgiftmift.com%2Fmy-account%2F&digits_form=b0f432e8d8&action_type=phone&digits_phone=%phone_number%&digits_email=&digits_secured=1&woocommerce-login-nonce=103395072a&_wp_http_referer=%2Fmy-account%2F&digits_container_id=customer_login"
   }
 ]

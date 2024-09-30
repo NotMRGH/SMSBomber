@@ -1,16 +1,7 @@
 package ir.mrsf.smsbomber.models;
 
 import com.google.gson.JsonElement;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import ir.mrsf.smsbomber.enums.Method;
 
-@Getter
-@AllArgsConstructor
-public class API {
-    private final String name;
-    private final String url;
-    private final String countryCode;
-    private final boolean withOutZero;
-    private final int repeat;
-    private final JsonElement payload;
+public record API(String name, String url, boolean withOutZero, Method method, int repeat, JsonElement payload) {
 }

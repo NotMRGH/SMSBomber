@@ -1,5 +1,6 @@
 package ir.mrsf.smsbomber;
 
+import com.google.gson.Gson;
 import ir.mrsf.smsbomber.managers.ConfigManager;
 import ir.mrsf.smsbomber.managers.ProxyManager;
 import ir.mrsf.smsbomber.utils.RequestUtil;
@@ -16,6 +17,7 @@ public class SMSBomber {
     private static SMSBomber smsBomber;
     private final ProxyManager proxyManager;
     private final ConfigManager configManager;
+    private final Gson gson;
 
     public static void main(String[] args) {
         new SMSBomber();
@@ -23,6 +25,7 @@ public class SMSBomber {
 
     public SMSBomber() {
         smsBomber = this;
+        this.gson = new Gson();
         this.configManager = new ConfigManager();
         this.proxyManager = new ProxyManager();
         final Scanner scanner = new Scanner(System.in);
@@ -31,12 +34,16 @@ public class SMSBomber {
         final String proxyMode = scanner.nextLine();
 
         if (proxyMode.equalsIgnoreCase("y")) {
-            System.out.println("Loading Proxy List...");
-            proxyManager.load();
-            System.out.println(this.proxyManager.getProxies().size() + " Proxy loaded");
-            if (this.proxyManager.getProxies().isEmpty()) {
-                System.out.println("No working proxies available.");
-                return;
+            System.out.println("Proxy proxyMethod (file or auto): ");
+            final String proxyMethod = scanner.nextLine();
+            if (proxyMethod.equalsIgnoreCase("file")) {
+                System.out.println("Loading proxy file...");
+                this.proxyManager.loadFile();
+                this.proxyManager.proxyInfo();
+            } else {
+                System.out.println("Loading proxy list automatically...");
+                this.proxyManager.loadAuto();
+                this.proxyManager.proxyInfo();
             }
         }
 

