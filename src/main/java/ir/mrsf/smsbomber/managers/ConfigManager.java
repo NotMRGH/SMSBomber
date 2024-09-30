@@ -49,10 +49,15 @@ public class ConfigManager {
                     if (jsonObject.has("withOutZero")) {
                         withOutZero = jsonObject.get("withOutZero").getAsBoolean();
                     }
+                    String forceContentType = null;
+                    if (jsonObject.has("forceContentType")) {
+                        forceContentType = jsonObject.get("forceContentType").getAsString();
+                    }
                     final API api = new API(
                             jsonObject.get("name").getAsString(),
                             jsonObject.get("url").getAsString(),
                             withOutZero,
+                            forceContentType,
                             Method.valueOf(jsonObject.get("method").getAsString()),
                             jsonObject.get("repeat").getAsInt(),
                             jsonObject.get("payload")

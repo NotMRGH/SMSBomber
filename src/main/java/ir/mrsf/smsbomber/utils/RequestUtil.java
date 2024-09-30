@@ -1,6 +1,7 @@
 package ir.mrsf.smsbomber.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import ir.mrsf.smsbomber.SMSBomber;
@@ -34,14 +35,22 @@ public class RequestUtil {
 
             final List<API> apiList = SMSBomber.getSmsBomber().getConfigManager().getApiList();
             for (API api : apiList) {
-                final Object payload = api.payload();
+                final JsonElement payload = api.payload();
                 ContentType contentType;
                 String body;
                 if (payload instanceof JsonObject payloadJson) {
+                    if (api.forceContentType() == null) {
+                        contentType = ContentType.JSON;
+                    } else {
+                        contentType = ContentType.fromString(api.forceContentType());
+                    }
                     body = gson.toJson(payloadJson, JsonObject.class);
-                    contentType = ContentType.JSON;
                 } else if (payload instanceof JsonPrimitive jsonPrimitive && jsonPrimitive.isString()) {
-                    contentType = ContentType.www_form_urlencoded;
+                    if (api.forceContentType() == null) {
+                        contentType = ContentType.www_form_urlencoded;
+                    } else {
+                        contentType = ContentType.fromString(api.forceContentType());
+                    }
                     body = jsonPrimitive.getAsString();
                 } else {
                     contentType = null;

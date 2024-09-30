@@ -59,6 +59,13 @@ If you want to remove the leading zero from the phone number, set the following 
 ```
 "withOutZero": true
 ```
+If you want to forcibly set `ContentType`, add the following option:
+```
+"forceContentType": "application/json"
+```
+```
+"forceContentType": "application/x-www-form-urlencoded"
+```
 
 ## PlaceHolders:
 Default phone number format:

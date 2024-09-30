@@ -5,10 +5,7 @@ import ir.mrsf.smsbomber.SMSBomber;
 import lombok.Getter;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
