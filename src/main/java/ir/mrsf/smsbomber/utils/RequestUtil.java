@@ -7,6 +7,7 @@ import com.google.gson.JsonPrimitive;
 import ir.mrsf.smsbomber.SMSBomber;
 import ir.mrsf.smsbomber.enums.ContentType;
 import ir.mrsf.smsbomber.enums.Method;
+import ir.mrsf.smsbomber.enums.ScanType;
 import ir.mrsf.smsbomber.managers.ProxyManager;
 import ir.mrsf.smsbomber.models.API;
 import lombok.experimental.UtilityClass;
@@ -16,8 +17,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 @UtilityClass
@@ -83,6 +88,57 @@ public class RequestUtil {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<String> findSites(
+            int timeout, int maxThreads, ScanType scanType, String[] keywords, List<String> domains
+    ) {
+        final List<String> findDomains = new ArrayList<>();
+        final ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
+        final AtomicInteger counter = new AtomicInteger(0);
+        final int totalDomains = domains.size();
+
+        for (String domain : domains) {
+            executor.submit(() -> {
+                try {
+                    switch (scanType) {
+                        case wordpress -> {
+                            if (WebUtil.isWordPressSite(timeout, domain)) {
+                                synchronized (findDomains) {
+                                    findDomains.add(domain);
+                                }
+                            }
+                        }
+                        case phone -> {
+                            if (WebUtil.usesPhoneLogin(timeout, domain, keywords)) {
+                                synchronized (findDomains) {
+                                    findDomains.add(domain);
+                                }
+                            }
+                        }
+                    }
+
+                    final int progress = counter.incrementAndGet();
+                    if (progress % 10 == 0 || progress == totalDomains) {
+                        System.out.println("Progress: " + progress + "/" + totalDomains + " | " +
+                                           findDomains.size() + " find" +
+                                           " (" + (progress * 100 / totalDomains) + "%)");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error processing " + domain + ": " + e.getMessage());
+                }
+            });
+        }
+
+        executor.shutdown();
+        try {
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            System.err.println("Process interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
+
+        return findDomains;
     }
 
     private void sendLog(String name, int responseCode) {

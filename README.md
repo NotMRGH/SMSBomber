@@ -1,9 +1,30 @@
 ## Features
-| Feature            | Supported |
-|--------------------|:---------:|
-| Multithreading     |     ✅     |
-| Proxy Support      |     ✅     |
-| Custom API Support |     ✅     |
+| Feature              | Supported |
+|----------------------|:---------:|
+| Multithreading       |     ✅     |
+| Proxy Support        |     ✅     |
+| Custom API Support   |     ✅     |
+| WordPress Scanner    |     ✅     |
+| Phone Login Detector |     ✅     |
+
+## Tools
+
+### 🔍 WordPress Scanner
+This tool checks whether a given website is built with **WordPress** by looking for typical WordPress markers such as:
+- Presence of `/wp-content/`, `/wp-includes/` in page HTML
+- `meta[name=generator]` tag with `WordPress`
+- Cookies starting with `wp-` or `wordpress_`
+- Existence of `https://api.w.org/` link tag
+
+It helps you identify potential WordPress targets for more focused scanning.
+
+### 📱 Phone Login Detector
+This tool scans a website to detect if it uses **phone number-based authentication**, by:
+- Crawling public pages like `/login`, `/register`, `/my-account/`, etc.
+- Searching page content for keywords like `موبایل`, `شماره`, `mobile number`, `phone number`, `OTP`, etc.
+- Accepts **custom keyword input** from the user for flexible detection
+
+Useful for filtering WordPress sites that use mobile login forms.
 
 ## Installation
 1. Ensure that **Java 17** is installed on your device.
@@ -31,6 +52,7 @@ For a POST request:
   }
 }
 ```
+
 Alternatively:
 ```json
 {
@@ -59,6 +81,7 @@ If you want to remove the leading zero from the phone number, set the following 
 ```
 "withOutZero": true
 ```
+
 If you want to forcibly set `ContentType`, add the following option:
 ```
 "forceContentType": "application/json"
@@ -72,8 +95,8 @@ Default phone number format:
 ```
 %phone_number%
 ```
-Customized phone number format (e.g., inserting - between digits):
 
+Customized phone number format (e.g., inserting - between digits):
 ```
 %phone_number_<1><2><3><4>%-%phone_number_<5><6><7>%-%phone_number_<8><9><10><11>%
 ```

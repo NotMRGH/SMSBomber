@@ -2,6 +2,10 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+.gitattributes
+dependency-reduced-pom.xml
+domains.txt
+output.txt
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
