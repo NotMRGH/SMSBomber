@@ -9,6 +9,8 @@ import ir.mrsf.smsbomber.utils.RequestUtil;
 import lombok.Getter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
@@ -46,12 +48,11 @@ public class SMSBomber {
         System.out.println("Input file path: ");
         final String inputFile = scanner.nextLine();
 
-        System.out.println("Output file path: ");
-        final String outputFile = scanner.nextLine();
-
         try {
             System.out.println("Reading domains from: " + inputFile);
-            final List<String> domains = FileUtil.readDomains(inputFile);
+            List<String> domains = FileUtil.readDomains(inputFile);
+            domains = new ArrayList<>(new HashSet<>(domains));
+
             System.out.println("Found " + domains.size() + " domains to check");
 
             System.out.print("Please enter thread count to attack (recommended 20): ");
@@ -60,16 +61,14 @@ public class SMSBomber {
             System.out.println("Scan wordpress sites or scan sites have phone number login (wordpress or phone): ");
             final String scanType = scanner.nextLine();
 
-            System.out.println(scanType);
+            final List<String> sites = new ArrayList<>();
 
             switch (scanType) {
                 case "wordpress" -> {
-                    final List<String> wordPressDomains = RequestUtil.findSites(5, threadCount,
-                            ScanType.wordpress, null, domains);
+                    sites.addAll(RequestUtil.findSites(5, threadCount, ScanType.wordpress, null, domains));
 
-                    System.out.println("Found " + wordPressDomains.size() + " WordPress sites out of "
+                    System.out.println("Found " + sites.size() + " WordPress sites out of "
                                        + domains.size() + " domains");
-                    FileUtil.writeDomains(outputFile, wordPressDomains);
                 }
                 case "phone" -> {
                     System.out.println("Which words or phrases are you looking for on the site?" +
@@ -77,15 +76,18 @@ public class SMSBomber {
                                        " separated by space or comma.");
                     final String[] keywords = scanner.nextLine().split(",");
 
-                    final List<String> wordPressDomains = RequestUtil.findSites(5, threadCount,
-                            ScanType.phone, keywords, domains);
+                    sites.addAll(RequestUtil.findSites(5, threadCount, ScanType.phone, keywords, domains));
 
-                    System.out.println("Found " + wordPressDomains.size() + " sites out of "
+                    System.out.println("Found " + sites.size() + " sites out of "
                                        + domains.size() + " domains");
-                    FileUtil.writeDomains(outputFile, wordPressDomains);
                 }
-                default -> System.out.println("Unrecognized scan type");
+                default -> {
+                    System.out.println("Unrecognized scan type");
+                    return;
+                }
             }
+
+            FileUtil.writeDomains("output.txt", sites);
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());

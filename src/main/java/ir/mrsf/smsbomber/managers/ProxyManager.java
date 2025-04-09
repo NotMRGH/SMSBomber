@@ -5,7 +5,10 @@ import ir.mrsf.smsbomber.SMSBomber;
 import lombok.Getter;
 
 import java.io.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +56,7 @@ public class ProxyManager {
     public void loadAuto() {
         try {
             final URL url = new URL("https://api.proxyscrape.com/v3/free-proxy-list/get?request=displayproxies" +
-                    "&proxy_format=protocolipport&format=text");
+                                    "&proxy_format=protocolipport&format=text");
             final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setConnectTimeout(3000);
