@@ -1,9 +1,6 @@
 package ir.mrsf.smsbomber.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
+import com.google.gson.*;
 import ir.mrsf.smsbomber.SMSBomber;
 import ir.mrsf.smsbomber.enums.ContentType;
 import ir.mrsf.smsbomber.enums.Method;
@@ -12,7 +9,9 @@ import ir.mrsf.smsbomber.managers.ProxyManager;
 import ir.mrsf.smsbomber.models.API;
 import lombok.experimental.UtilityClass;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -35,7 +34,7 @@ public class RequestUtil {
         proxyManager = null;
     }
 
-    public void sendSMSRequest(ExecutorService executor, String phone) {
+    public void sendSMSRequest(ExecutorService executor, String phone, boolean debug) {
         try {
 
             final List<API> apiList = SMSBomber.getSmsBomber().getConfigManager().getApiList();
@@ -75,10 +74,28 @@ public class RequestUtil {
                     switch (api.method()) {
                         case POST -> executor.submit(() -> smsRequest(StringUtil.setPlaceHolder(phoneNumber, api.url())
                                 , contentType, StringUtil.setPlaceHolder(phoneNumber, body),
-                                (integer) -> sendLog(api.name(), integer)
+                                (data) -> {
+                                    final JsonElement jsonElement = JsonParser.parseString(data);
+                                    if (debug) {
+                                        sendLog(api.name(), jsonElement.isJsonObject() || jsonElement.isJsonArray() ?
+                                                gson.toJson(jsonElement) : data
+                                        );
+                                    } else {
+                                        sendLog(api.name(), null);
+                                    }
+                                }
                         ));
                         case GET -> executor.submit(() -> smsRequest(StringUtil.setPlaceHolder(phoneNumber, api.url()),
-                                (integer) -> sendLog(api.name(), integer)
+                                (data) -> {
+                                    final JsonElement jsonElement = JsonParser.parseString(data);
+                                    if (debug) {
+                                        sendLog(api.name(), jsonElement.isJsonObject() || jsonElement.isJsonArray() ?
+                                                gson.toJson(jsonElement) : data
+                                        );
+                                    } else {
+                                        sendLog(api.name(), null);
+                                    }
+                                }
                         ));
                         default -> throw new RuntimeException("Invalid method");
                     }
@@ -141,38 +158,57 @@ public class RequestUtil {
         return findDomains;
     }
 
-    private void sendLog(String name, int responseCode) {
-        System.out.println("Sent from: " + name + " status: " + responseCode);
+    private void sendLog(String name, String data) {
+        if (data == null) {
+            System.out.println("Sent from: " + name);
+            return;
+        }
+        System.out.println("Sent from: " + name + " data: " + data);
     }
 
-    private void smsRequest(String url, ContentType contentType, String body, Consumer<Integer> callback) {
+    private void smsRequest(String url, ContentType contentType, String body, Consumer<String> callback) {
         try {
             Thread.sleep(500);
             final byte[] postData = body.getBytes(StandardCharsets.UTF_8);
             final HttpURLConnection connection = getHttpURLConnectionSMS(url, contentType, postData);
 
+            connection.setDoOutput(true);
             try (OutputStream outputStream = connection.getOutputStream()) {
                 outputStream.write(postData);
             }
 
-            callback.accept(connection.getResponseCode());
-        } catch (Exception ignored) {
-            callback.accept(500);
+            callback.accept(readResponse(connection));
+        } catch (Exception e) {
+            callback.accept(e.getMessage());
         }
     }
 
-    private void smsRequest(String url, Consumer<Integer> callback) {
+
+    private void smsRequest(String url, Consumer<String> callback) {
         try {
             Thread.sleep(500);
             proxyManager = SMSBomber.getSmsBomber().getProxyManager();
-            final HttpURLConnection connection = (HttpURLConnection) new URL(url).
-                    openConnection(proxyManager.getNextProxy());
+            final HttpURLConnection connection = (HttpURLConnection) new URL(url)
+                    .openConnection(proxyManager.getNextProxy());
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(3000);
             connection.setReadTimeout(3000);
-            callback.accept(connection.getResponseCode());
-        } catch (Exception ignored) {
-            callback.accept(500);
+
+            callback.accept(readResponse(connection));
+        } catch (Exception e) {
+            callback.accept(e.getMessage());
+        }
+    }
+
+    private String readResponse(HttpURLConnection connection) throws IOException {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            return response.toString();
         }
     }
 

