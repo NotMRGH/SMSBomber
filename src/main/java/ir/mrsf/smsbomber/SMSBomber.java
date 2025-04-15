@@ -116,14 +116,15 @@ public class SMSBomber {
         System.out.println("Please enter the phone number to attack: ");
         final String phone = scanner.nextLine();
 
+        System.out.println("Debug mode (y or n): ");
+        final boolean debug = scanner.nextLine().equalsIgnoreCase("y");
+
         System.out.print("Please enter repeat count to attack (-1 to infinite): ");
         final int repeatCount = scanner.nextInt();
 
         System.out.print("Please enter thread count to attack (recommended 20): ");
         final int threadCount = scanner.nextInt();
 
-        System.out.println("Debug mode (y or n): ");
-        final boolean debug = scanner.nextLine().equalsIgnoreCase("y");
         ExecutorService executor;
 
         if (repeatCount == -1) {
